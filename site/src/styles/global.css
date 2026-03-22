@@ -1,0 +1,103 @@
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input { font-family: inherit; }
+
+/* ── Layout ── */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Loading ── */
+.loading-state {
+  text-align: center;
+  padding: var(--s16) var(--s8);
+  color: var(--text-2);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.error-state {
+  text-align: center;
+  padding: var(--s16) var(--s8);
+  color: #f85149;
+  font-size: 14px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--s16) var(--s8);
+  color: var(--text-3);
+  font-size: 14px;
+}
+
+.empty-state strong {
+  display: block;
+  color: var(--text-2);
+  font-size: 16px;
+  margin-bottom: var(--s2);
+}
+
+/* ── Results count ── */
+.results-count {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: var(--s4);
+  padding: 0 var(--s1);
+  animation: fadeIn var(--t-slow) var(--ease) both;
+}
+
+/* ── Skills grid ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s4);
+  animation: fadeIn var(--t-slow) var(--ease) both;
+}
+
+@media (min-width: 640px) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
