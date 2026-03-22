@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-03-22T19:01:12.976Z",
+    "generated_at": "2026-03-22T18:34:42.036Z",
     "total_skills": 5,
     "by_domain": {
       "design": 1,
@@ -14,7 +14,7 @@
     "stars": 0,
     "forks": 0,
     "open_issues": 0,
-    "repo": "le-diegz/claude-skills-registry"
+    "repo": "owner/claude-skills-registry"
   },
   "skills": [
     {
@@ -40,11 +40,7 @@
       "path": "skills/code/code-reviewer",
       "has_examples": true,
       "has_evals": true,
-      "last_commit": {
-        "sha": "c542f03211c4f1e38565b06d606f70d9339134eb",
-        "date": "2026-03-22 20:00:51 +0100",
-        "message": "feat: initial MVP — 5 skills, validation CI, build index"
-      }
+      "last_commit": null
     },
     {
       "name": "doc-writer",
@@ -69,11 +65,7 @@
       "path": "skills/content/doc-writer",
       "has_examples": true,
       "has_evals": true,
-      "last_commit": {
-        "sha": "c542f03211c4f1e38565b06d606f70d9339134eb",
-        "date": "2026-03-22 20:00:51 +0100",
-        "message": "feat: initial MVP — 5 skills, validation CI, build index"
-      }
+      "last_commit": null
     },
     {
       "name": "data-analyst",
@@ -98,11 +90,7 @@
       "path": "skills/data/data-analyst",
       "has_examples": true,
       "has_evals": true,
-      "last_commit": {
-        "sha": "c542f03211c4f1e38565b06d606f70d9339134eb",
-        "date": "2026-03-22 20:00:51 +0100",
-        "message": "feat: initial MVP — 5 skills, validation CI, build index"
-      }
+      "last_commit": null
     },
     {
       "name": "frontend-design",
@@ -131,11 +119,7 @@
       "path": "skills/design/frontend-design",
       "has_examples": true,
       "has_evals": true,
-      "last_commit": {
-        "sha": "c542f03211c4f1e38565b06d606f70d9339134eb",
-        "date": "2026-03-22 20:00:51 +0100",
-        "message": "feat: initial MVP — 5 skills, validation CI, build index"
-      }
+      "last_commit": null
     },
     {
       "name": "skill-creator",
@@ -162,11 +146,7 @@
       "path": "skills/meta/skill-creator",
       "has_examples": true,
       "has_evals": true,
-      "last_commit": {
-        "sha": "c542f03211c4f1e38565b06d606f70d9339134eb",
-        "date": "2026-03-22 20:00:51 +0100",
-        "message": "feat: initial MVP — 5 skills, validation CI, build index"
-      }
+      "last_commit": null
     }
   ]
 }

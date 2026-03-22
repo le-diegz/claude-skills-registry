@@ -1,0 +1,229 @@
+/* ── Variables ──────────────────────────────────────────────────────────── */
+:root {
+  --bg:        #0d1117;
+  --bg-2:      #161b22;
+  --bg-3:      #21262d;
+  --border:    #30363d;
+  --text-1:    #e6edf3;
+  --text-2:    #8b949e;
+  --text-3:    #484f58;
+  --accent:    #58a6ff;
+
+  --fresh:     #059669;
+  --update:    #D97706;
+  --unknown:   #6B7280;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Fira Code', monospace;
+
+  --radius:    6px;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* ── App layout ─────────────────────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ── Title bar ──────────────────────────────────────────────────────────── */
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 16px 0 80px; /* 80px left for macOS traffic lights */
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  -webkit-app-region: drag;
+  flex-shrink: 0;
+}
+
+.titlebar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.01em;
+}
+
+.titlebar-refresh {
+  -webkit-app-region: no-drag;
+  background: none;
+  border: none;
+  color: var(--text-3);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+.titlebar-refresh:hover { color: var(--text-1); background: var(--bg-3); }
+
+/* ── Main content ───────────────────────────────────────────────────────── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content::-webkit-scrollbar { width: 6px; }
+.content::-webkit-scrollbar-track { background: transparent; }
+.content::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 3px; }
+
+/* ── Empty state ────────────────────────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
+  color: var(--text-2);
+  padding: 24px;
+  text-align: center;
+}
+
+.empty-title { font-size: 15px; font-weight: 600; color: var(--text-1); }
+.empty-sub   { font-size: 12px; line-height: 1.6; }
+.empty-sub code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--bg-3);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--accent);
+}
+
+/* ── Skill list ─────────────────────────────────────────────────────────── */
+.skill-list { display: flex; flex-direction: column; }
+
+.skill-list-header {
+  display: grid;
+  grid-template-columns: 1fr 120px 180px 140px;
+  padding: 8px 16px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-3);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* ── Skill row ──────────────────────────────────────────────────────────── */
+.skill-row {
+  display: grid;
+  grid-template-columns: 1fr 120px 180px 140px;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+.skill-row:last-child { border-bottom: none; }
+.skill-row:hover { background: var(--bg-2); }
+
+.col-name   { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.col-source { display: flex; align-items: center; }
+.col-status { display: flex; align-items: center; }
+.col-action { display: flex; align-items: center; justify-content: flex-end; }
+
+.skill-row-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-1);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skill-row-desc {
+  font-size: 11px;
+  color: var(--text-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.source-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+  background: var(--bg-3);
+  padding: 2px 7px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+/* ── Update badges ──────────────────────────────────────────────────────── */
+.badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.badge--ok       { color: var(--fresh);   background: color-mix(in srgb, var(--fresh) 15%, transparent);  border: 1px solid color-mix(in srgb, var(--fresh) 30%, transparent); }
+.badge--update   { color: var(--update);  background: color-mix(in srgb, var(--update) 15%, transparent); border: 1px solid color-mix(in srgb, var(--update) 30%, transparent); }
+.badge--unknown  { color: var(--unknown); background: color-mix(in srgb, var(--unknown) 12%, transparent); border: 1px solid color-mix(in srgb, var(--unknown) 20%, transparent); }
+.badge--checking { color: var(--text-3);  background: transparent; border: 1px solid var(--border); font-style: italic; }
+
+/* ── Copy button ────────────────────────────────────────────────────────── */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+}
+.copy-btn:hover { background: var(--bg); color: var(--text-1); border-color: var(--text-3); }
+.copy-btn.copied { color: var(--fresh); border-color: color-mix(in srgb, var(--fresh) 40%, transparent); }
+
+/* ── Status bar ─────────────────────────────────────────────────────────── */
+.statusbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-3);
+  flex-shrink: 0;
+}
+.statusbar-sep { color: var(--border); }
+
+/* ── Animations ─────────────────────────────────────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

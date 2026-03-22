@@ -1,0 +1,41 @@
+{
+  "name": "skills-manager",
+  "version": "1.0.0",
+  "description": "Desktop manager for Claude skills",
+  "main": "electron.js",
+  "scripts": {
+    "start": "vite build && env -u ELECTRON_RUN_AS_NODE electron .",
+    "dev": "vite build --watch & sleep 2 && env -u ELECTRON_RUN_AS_NODE electron .",
+    "build:mac": "vite build && electron-builder --mac",
+    "build:win": "vite build && electron-builder --win",
+    "build:all": "vite build && electron-builder --mac --win"
+  },
+  "build": {
+    "appId": "io.github.le-diegz.skills-manager",
+    "productName": "Skills Manager",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron.js",
+      "preload.cjs",
+      "assets/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "electron": "^32.3.3",
+    "electron-builder": "^25.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^5.4.21"
+  }
+}
