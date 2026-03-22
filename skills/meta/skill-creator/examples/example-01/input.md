@@ -1,0 +1,1 @@
+I want to create a skill that helps Claude write better error messages. When developers ask Claude to write error messages for their app (validation errors, API errors, user-facing messages), it should produce clear, actionable error messages that tell the user what went wrong AND what to do about it. Can you create this skill for the registry?

@@ -1,0 +1,1 @@
+Build a dashboard component for user metrics. It should show: active users (current count), events today (number), error rate (percentage), and a sparkline chart for the last 7 days of activity. The product is an API monitoring tool called Beacon used by backend engineers.

@@ -1,0 +1,12 @@
+{
+  "name": "frontend-design",
+  "version": "1.0.0",
+  "description": "Builds production-grade frontend interfaces with intentional, distinctive aesthetics instead of generic AI output.",
+  "trigger": "Activate this skill when the user asks to create, build, or design a frontend interface, landing page, dashboard, component, or UI element and quality of visual output matters. Do not activate for purely functional tasks like fixing a bug in existing CSS, adjusting a layout value, or writing utility functions. If the user explicitly asks for a plain or unstyled component, do not apply this skill.",
+  "domain": "design",
+  "tags": ["frontend", "ui", "css", "typography", "animation", "layout", "design-systems"],
+  "author": "lediegz",
+  "model_compatibility": ["claude-sonnet-4-6", "claude-opus-4-6"],
+  "requires_tools": ["Write"],
+  "license": "MIT"
+}

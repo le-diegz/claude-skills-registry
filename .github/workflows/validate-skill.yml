@@ -1,0 +1,84 @@
+name: Validate Skills
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "skills/**"
+
+jobs:
+  validate:
+    name: Validate modified skills
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Detect modified skill directories
+        id: detect
+        run: |
+          # List files changed between the base branch and this PR head
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+
+          # Extract unique skill root directories (skills/<domain>/<skill-name>)
+          SKILL_DIRS=$(echo "$CHANGED" \
+            | grep '^skills/' \
+            | awk -F'/' 'NF>=3 {print $1"/"$2"/"$3}' \
+            | sort -u)
+
+          if [ -z "$SKILL_DIRS" ]; then
+            echo "No skill directories modified — nothing to validate."
+            echo "skill_dirs=" >> "$GITHUB_OUTPUT"
+          else
+            # Encode as a newline-separated list stored in one output variable
+            echo "skill_dirs<<EOF" >> "$GITHUB_OUTPUT"
+            echo "$SKILL_DIRS" >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate each modified skill
+        if: steps.detect.outputs.skill_dirs != ''
+        run: |
+          FAILED=0
+
+          while IFS= read -r skill_dir; do
+            [ -z "$skill_dir" ] && continue
+
+            echo "──────────────────────────────────────────"
+            echo "Validating: $skill_dir"
+
+            if node scripts/validate-skill.js "$skill_dir"; then
+              echo "  → OK"
+            else
+              echo "  → FAILED"
+              FAILED=$((FAILED + 1))
+            fi
+          done <<< "${{ steps.detect.outputs.skill_dirs }}"
+
+          echo "──────────────────────────────────────────"
+
+          if [ "$FAILED" -gt 0 ]; then
+            echo ""
+            echo "❌ $FAILED skill(s) failed validation."
+            echo ""
+            echo "Fix the errors above before this PR can be merged."
+            echo "Run the validator locally with:"
+            echo "  node scripts/validate-skill.js <path-to-skill>"
+            echo "See docs/skill-spec.md for the full specification."
+            exit 1
+          fi
+
+          echo "✓ All modified skills passed validation."

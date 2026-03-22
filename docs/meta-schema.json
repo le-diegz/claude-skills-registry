@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/claude-skills-registry/meta-schema.json",
+  "title": "SkillMeta",
+  "description": "Schema for meta.json — the machine-readable metadata file required at the root of every skill.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "version",
+    "description",
+    "trigger",
+    "domain",
+    "tags",
+    "author",
+    "model_compatibility",
+    "requires_tools",
+    "license"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique skill identifier. Must be kebab-case, lowercase, alphanumeric and hyphens only. Must match the skill's directory name exactly.",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 2,
+      "maxLength": 40,
+      "examples": ["figma-to-tailwind", "sql-query-builder", "commit-message-writer"]
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the skill. New skills must start at 1.0.0.",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+      "examples": ["1.0.0", "1.2.0", "2.0.0"]
+    },
+    "description": {
+      "type": "string",
+      "description": "One sentence describing what the skill produces. Must start with a verb. Maximum 120 characters.",
+      "minLength": 10,
+      "maxLength": 120,
+      "examples": [
+        "Converts a Figma component description into production-ready Tailwind CSS markup.",
+        "Generates a conventional commit message from a git diff."
+      ]
+    },
+    "trigger": {
+      "type": "string",
+      "description": "2–3 sentences telling Claude when to activate this skill. Must include at least one boundary condition (when NOT to activate).",
+      "minLength": 20,
+      "examples": [
+        "Activate this skill when the user provides a Figma design description or asks to implement a UI component. Do not activate for generic CSS questions unrelated to a Figma source."
+      ]
+    },
+    "domain": {
+      "type": "string",
+      "description": "The single domain this skill belongs to.",
+      "enum": ["design", "code", "content", "data", "meta"]
+    },
+    "tags": {
+      "type": "array",
+      "description": "Between 2 and 8 lowercase kebab-case tags. Must be specific — avoid generic terms like tool, helper, utility.",
+      "minItems": 2,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+        "minLength": 2,
+        "maxLength": 30
+      },
+      "examples": [["figma", "tailwind", "css", "ui", "component"]]
+    },
+    "author": {
+      "type": "string",
+      "description": "GitHub handle of the skill author, without the @ prefix.",
+      "pattern": "^[a-zA-Z0-9]([a-zA-Z0-9-]{0,37}[a-zA-Z0-9])?$",
+      "minLength": 1,
+      "maxLength": 39,
+      "examples": ["lediegz"]
+    },
+    "model_compatibility": {
+      "type": "array",
+      "description": "Models this skill has been tested and confirmed to work with. List only models you have personally verified.",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["claude-sonnet-4-6", "claude-opus-4-6", "claude-haiku-4-5"]
+      },
+      "examples": [["claude-sonnet-4-6", "claude-opus-4-6"]]
+    },
+    "requires_tools": {
+      "type": "array",
+      "description": "Claude Code tools this skill requires to function. Can be empty if no tools are needed.",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "Read",
+          "Write",
+          "Edit",
+          "Bash",
+          "Glob",
+          "Grep",
+          "WebFetch",
+          "WebSearch",
+          "Agent",
+          "TodoWrite",
+          "NotebookEdit"
+        ]
+      },
+      "examples": [["Read", "Write"], ["Bash"], []]
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX license identifier. Use MIT for most skills, CC-BY-4.0 for content-only skills.",
+      "minLength": 1,
+      "examples": ["MIT", "Apache-2.0", "CC-BY-4.0"]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "claude-skills-registry",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Open-source registry of Claude skills for the Claude Code ecosystem.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "node scripts/validate-skill.js",
+    "validate:all": "node scripts/validate-all.js",
+    "build": "node scripts/build-index.js",
+    "build:watch": "node scripts/build-watch.js"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "chokidar": "^4.0.3"
+  }
+}

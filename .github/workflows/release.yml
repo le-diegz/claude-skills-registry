@@ -1,0 +1,85 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Rebuild index.json at tag
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/build-index.js
+
+      - name: Read CHANGELOG.md
+        id: changelog
+        run: |
+          if [ -f CHANGELOG.md ]; then
+            CONTENT=$(cat CHANGELOG.md)
+          else
+            CONTENT="No CHANGELOG.md found for this release."
+          fi
+
+          # Store multi-line content in GITHUB_OUTPUT
+          echo "content<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$CONTENT" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require("fs");
+            const tag = context.ref.replace("refs/tags/", "");
+
+            // Create the release
+            const release = await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              tag_name: tag,
+              name: tag,
+              body: `${{ steps.changelog.outputs.content }}`,
+              draft: false,
+              prerelease: tag.includes("-"),
+            });
+
+            // Attach index.json as a release asset
+            const indexContent = fs.readFileSync("index.json");
+
+            await github.rest.repos.uploadReleaseAsset({
+              owner:          context.repo.owner,
+              repo:           context.repo.repo,
+              release_id:     release.data.id,
+              name:           "index.json",
+              data:           indexContent,
+              headers: {
+                "content-type":   "application/json",
+                "content-length": indexContent.length,
+              },
+            });
+
+            console.log(`Release ${tag} created: ${release.data.html_url}`);

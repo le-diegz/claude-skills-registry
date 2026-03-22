@@ -1,0 +1,1 @@
+Write a README for a CLI tool called `snapenv`. It copies your current shell environment variables to a `.env` file. Usage: `snapenv > .env` or `snapenv --filter PREFIX_ > .env` to only export variables matching a prefix. It's a Go binary, installed via `brew install snapenv` or `go install`.

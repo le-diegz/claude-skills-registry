@@ -1,0 +1,12 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: General questions & discussion
+    url: https://github.com/owner/claude-skills-registry/discussions
+    about: >
+      Ask questions, share ideas, or discuss the registry — use GitHub Discussions
+      rather than opening a blank issue.
+  - name: Read the skill specification
+    url: https://github.com/owner/claude-skills-registry/blob/main/docs/skill-spec.md
+    about: >
+      Read the full spec before proposing or contributing a skill.

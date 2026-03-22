@@ -1,0 +1,12 @@
+{
+  "name": "skill-creator",
+  "version": "1.0.0",
+  "description": "Creates well-scoped, spec-compliant registry skills with prescriptive instructions and high-quality examples.",
+  "trigger": "Activate this skill when the user wants to create a new skill for the claude-skills-registry, asks for help writing a SKILL.md, or wants to turn a prompt or workflow into a reusable skill. Do not activate for general prompt engineering questions, modifying existing skills, or tasks unrelated to the registry format.",
+  "domain": "meta",
+  "tags": ["skill-registry", "prompt-engineering", "meta", "skill-authoring"],
+  "author": "lediegz",
+  "model_compatibility": ["claude-sonnet-4-6", "claude-opus-4-6"],
+  "requires_tools": ["Read", "Write"],
+  "license": "MIT"
+}

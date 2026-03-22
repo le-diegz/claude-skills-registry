@@ -1,0 +1,12 @@
+{
+  "name": "code-reviewer",
+  "version": "1.0.0",
+  "description": "Produces prioritized, actionable code review comments with concrete fix examples instead of style observations.",
+  "trigger": "Activate this skill when the user shares code and asks for a review, feedback, or a second opinion. Also activate when the user pastes a diff, a PR description with code, or asks 'what's wrong with this'. Do not activate for debugging a specific runtime error, explaining what code does, or refactoring without a review framing.",
+  "domain": "code",
+  "tags": ["code-review", "refactoring", "quality", "feedback", "pull-request"],
+  "author": "lediegz",
+  "model_compatibility": ["claude-sonnet-4-6", "claude-opus-4-6"],
+  "requires_tools": [],
+  "license": "MIT"
+}

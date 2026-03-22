@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "generated_at": "2026-03-22T18:34:42.036Z",
+    "total_skills": 5,
+    "by_domain": {
+      "design": 1,
+      "code": 1,
+      "content": 1,
+      "data": 1,
+      "meta": 1
+    },
+    "skills_with_evals": 5,
+    "skills_with_examples": 5,
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "repo": "owner/claude-skills-registry"
+  },
+  "skills": [
+    {
+      "name": "code-reviewer",
+      "version": "1.0.0",
+      "description": "Produces prioritized, actionable code review comments with concrete fix examples instead of style observations.",
+      "trigger": "Activate this skill when the user shares code and asks for a review, feedback, or a second opinion. Also activate when the user pastes a diff, a PR description with code, or asks 'what's wrong with this'. Do not activate for debugging a specific runtime error, explaining what code does, or refactoring without a review framing.",
+      "domain": "code",
+      "tags": [
+        "code-review",
+        "refactoring",
+        "quality",
+        "feedback",
+        "pull-request"
+      ],
+      "author": "lediegz",
+      "model_compatibility": [
+        "claude-sonnet-4-6",
+        "claude-opus-4-6"
+      ],
+      "requires_tools": [],
+      "license": "MIT",
+      "path": "skills/code/code-reviewer",
+      "has_examples": true,
+      "has_evals": true,
+      "last_commit": null
+    },
+    {
+      "name": "doc-writer",
+      "version": "1.0.0",
+      "description": "Writes technical documentation structured from concept to reference with a concrete example in every section.",
+      "trigger": "Activate this skill when the user asks to write, draft, or improve technical documentation, a README, an API reference, a guide, or a how-to. Do not activate for inline code comments, commit messages, changelogs, or non-technical writing tasks.",
+      "domain": "content",
+      "tags": [
+        "documentation",
+        "technical-writing",
+        "readme",
+        "api-reference",
+        "guides"
+      ],
+      "author": "lediegz",
+      "model_compatibility": [
+        "claude-sonnet-4-6",
+        "claude-opus-4-6"
+      ],
+      "requires_tools": [],
+      "license": "MIT",
+      "path": "skills/content/doc-writer",
+      "has_examples": true,
+      "has_evals": true,
+      "last_commit": null
+    },
+    {
+      "name": "data-analyst",
+      "version": "1.0.0",
+      "description": "Produces data insights by clarifying context first, recommending chart types, and separating correlation from causation.",
+      "trigger": "Activate this skill when the user shares a dataset, CSV, table, or set of metrics and asks for analysis, insights, patterns, or visualization recommendations. Do not activate for data transformation tasks with no analytical question, pure SQL generation, or requests to clean or reformat data only.",
+      "domain": "data",
+      "tags": [
+        "data-analysis",
+        "visualization",
+        "statistics",
+        "insights",
+        "csv"
+      ],
+      "author": "lediegz",
+      "model_compatibility": [
+        "claude-sonnet-4-6",
+        "claude-opus-4-6"
+      ],
+      "requires_tools": [],
+      "license": "MIT",
+      "path": "skills/data/data-analyst",
+      "has_examples": true,
+      "has_evals": true,
+      "last_commit": null
+    },
+    {
+      "name": "frontend-design",
+      "version": "1.0.0",
+      "description": "Builds production-grade frontend interfaces with intentional, distinctive aesthetics instead of generic AI output.",
+      "trigger": "Activate this skill when the user asks to create, build, or design a frontend interface, landing page, dashboard, component, or UI element and quality of visual output matters. Do not activate for purely functional tasks like fixing a bug in existing CSS, adjusting a layout value, or writing utility functions. If the user explicitly asks for a plain or unstyled component, do not apply this skill.",
+      "domain": "design",
+      "tags": [
+        "frontend",
+        "ui",
+        "css",
+        "typography",
+        "animation",
+        "layout",
+        "design-systems"
+      ],
+      "author": "lediegz",
+      "model_compatibility": [
+        "claude-sonnet-4-6",
+        "claude-opus-4-6"
+      ],
+      "requires_tools": [
+        "Write"
+      ],
+      "license": "MIT",
+      "path": "skills/design/frontend-design",
+      "has_examples": true,
+      "has_evals": true,
+      "last_commit": null
+    },
+    {
+      "name": "skill-creator",
+      "version": "1.0.0",
+      "description": "Creates well-scoped, spec-compliant registry skills with prescriptive instructions and high-quality examples.",
+      "trigger": "Activate this skill when the user wants to create a new skill for the claude-skills-registry, asks for help writing a SKILL.md, or wants to turn a prompt or workflow into a reusable skill. Do not activate for general prompt engineering questions, modifying existing skills, or tasks unrelated to the registry format.",
+      "domain": "meta",
+      "tags": [
+        "skill-registry",
+        "prompt-engineering",
+        "meta",
+        "skill-authoring"
+      ],
+      "author": "lediegz",
+      "model_compatibility": [
+        "claude-sonnet-4-6",
+        "claude-opus-4-6"
+      ],
+      "requires_tools": [
+        "Read",
+        "Write"
+      ],
+      "license": "MIT",
+      "path": "skills/meta/skill-creator",
+      "has_examples": true,
+      "has_evals": true,
+      "last_commit": null
+    }
+  ]
+}

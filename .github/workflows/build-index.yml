@@ -1,0 +1,55 @@
+name: Build Index
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "skills/**"
+      - "scripts/build-index.js"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Rebuild index.json
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Full history required so git log can retrieve commit metadata per skill
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build index.json
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/build-index.js
+
+      - name: Commit and push index.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add index.json
+
+          # Only commit if the file actually changed
+          if git diff --cached --quiet; then
+            echo "index.json is already up to date — nothing to commit."
+          else
+            git commit -m "chore: rebuild index.json [skip ci]"
+            git push
+          fi

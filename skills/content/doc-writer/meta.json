@@ -1,0 +1,12 @@
+{
+  "name": "doc-writer",
+  "version": "1.0.0",
+  "description": "Writes technical documentation structured from concept to reference with a concrete example in every section.",
+  "trigger": "Activate this skill when the user asks to write, draft, or improve technical documentation, a README, an API reference, a guide, or a how-to. Do not activate for inline code comments, commit messages, changelogs, or non-technical writing tasks.",
+  "domain": "content",
+  "tags": ["documentation", "technical-writing", "readme", "api-reference", "guides"],
+  "author": "lediegz",
+  "model_compatibility": ["claude-sonnet-4-6", "claude-opus-4-6"],
+  "requires_tools": [],
+  "license": "MIT"
+}

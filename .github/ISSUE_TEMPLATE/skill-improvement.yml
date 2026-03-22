@@ -1,0 +1,72 @@
+name: Skill improvement
+description: Report a problem with an existing skill or suggest an improvement.
+title: "improve(<skill-name>): "
+labels: ["improvement", "needs-review"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to report incorrect output, missing edge cases, outdated instructions,
+        or any other quality issue with a skill already in the registry.
+
+  - type: input
+    id: skill
+    attributes:
+      label: Affected skill
+      description: >
+        The full skill name as it appears in the registry (matches the directory name and
+        `name` field in meta.json).
+      placeholder: "e.g. figma-to-tailwind"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Observed problem
+      description: >
+        Describe what is wrong. Be specific: what input did you provide, what did Claude
+        produce, and why is that output incorrect or suboptimal?
+      placeholder: |
+        When I provide a Figma spec with a hover state, the skill consistently ignores
+        the hover color and outputs only the default state. The SKILL.md instructions
+        do not mention interactive states at all.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: >
+        What should change? You can propose new or updated instructions, additional
+        examples, a new eval case, or a change to meta.json. The more specific, the better.
+      placeholder: |
+        Add a step in the ## Instructions section that explicitly handles interactive states:
+        "If the spec includes hover, focus, or active states, map each to the corresponding
+        Tailwind variant prefix (hover:, focus:, active:)."
+
+        Also add eval-03 with a button spec that includes a hover color, to prevent regression.
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Concrete example of the problem (optional)
+      description: >
+        Paste the exact input you used and the output Claude produced. This is the fastest
+        way for maintainers to reproduce and confirm the issue.
+      placeholder: |
+        **Input I used:**
+        Button, primary. Background: #3B82F6. Hover background: #1D4ED8.
+
+        **What Claude produced:**
+        className="bg-blue-500 text-white ..."
+
+        **What it should have produced:**
+        className="bg-blue-500 hover:bg-blue-700 text-white ..."
+      render: markdown
+    validations:
+      required: false

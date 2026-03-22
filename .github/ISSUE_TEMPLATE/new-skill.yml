@@ -1,0 +1,99 @@
+name: Propose a new skill
+description: Suggest a new skill to add to the registry.
+title: "feat(skill): "
+labels: ["new-skill", "needs-review"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filling this form, please read [docs/skill-spec.md](../docs/skill-spec.md) entirely.
+        A skill proposal that does not follow the spec will be closed without review.
+
+  - type: input
+    id: name
+    attributes:
+      label: Skill name
+      description: >
+        Kebab-case identifier, max 40 characters. Use a verb-noun pattern when possible
+        (e.g. `commit-message-writer`, `figma-to-tailwind`). This will become the directory name.
+      placeholder: "e.g. sql-query-builder"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      description: Choose the single domain that best matches the skill's output.
+      options:
+        - design
+        - code
+        - content
+        - data
+        - meta
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Short description
+      description: >
+        One sentence, starting with a verb, describing what the skill produces.
+        Maximum 120 characters. This will become the `description` field in meta.json.
+      placeholder: "e.g. Generates a conventional commit message from a staged git diff."
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Primary use case
+      description: >
+        Describe the situation in which a user would invoke this skill.
+        What does the user provide as input? What do they get back?
+        This helps reviewers understand the trigger conditions.
+      placeholder: |
+        The user has staged changes in their repo and wants a well-structured commit message
+        following the Conventional Commits specification. They run the skill, Claude reads
+        the diff, and outputs a ready-to-use commit message with type, scope, and body.
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Example input / output (optional)
+      description: >
+        Paste one concrete example of what a user would send (input) and what Claude
+        should produce (output). Not required at this stage, but helps reviewers evaluate
+        the proposal faster.
+      placeholder: |
+        **Input:**
+        diff --git a/src/auth.ts ...
+
+        **Output:**
+        feat(auth): add JWT refresh token rotation
+      render: markdown
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before submitting
+      options:
+        - label: >
+            I have read [docs/skill-spec.md](../docs/skill-spec.md) and understand the
+            required structure for a valid skill.
+          required: true
+        - label: >
+            The skill name I proposed is kebab-case, unique, and not already present
+            in the registry.
+          required: true
+        - label: >
+            I commit to maintaining this skill (responding to issues, updating it when
+            the spec evolves) or to finding a maintainer.
+          required: true

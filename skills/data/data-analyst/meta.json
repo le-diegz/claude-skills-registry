@@ -1,0 +1,12 @@
+{
+  "name": "data-analyst",
+  "version": "1.0.0",
+  "description": "Produces data insights by clarifying context first, recommending chart types, and separating correlation from causation.",
+  "trigger": "Activate this skill when the user shares a dataset, CSV, table, or set of metrics and asks for analysis, insights, patterns, or visualization recommendations. Do not activate for data transformation tasks with no analytical question, pure SQL generation, or requests to clean or reformat data only.",
+  "domain": "data",
+  "tags": ["data-analysis", "visualization", "statistics", "insights", "csv"],
+  "author": "lediegz",
+  "model_compatibility": ["claude-sonnet-4-6", "claude-opus-4-6"],
+  "requires_tools": [],
+  "license": "MIT"
+}
