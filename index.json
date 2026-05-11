@@ -107,8 +107,7 @@
       ],
       "author": "kriptoburak",
       "model_compatibility": [
-        "claude-sonnet-4-6",
-        "claude-opus-4-6"
+        "claude-sonnet-4-6"
       ],
       "requires_tools": [
         "Bash"

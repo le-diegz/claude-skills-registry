@@ -6,7 +6,7 @@
   "domain": "data",
   "tags": ["x-twitter", "social-media", "api", "research", "monitoring"],
   "author": "kriptoburak",
-  "model_compatibility": ["claude-sonnet-4-6", "claude-opus-4-6"],
+  "model_compatibility": ["claude-sonnet-4-6"],
   "requires_tools": ["Bash"],
   "license": "MIT"
 }
