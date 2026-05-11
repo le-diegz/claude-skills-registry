@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-03-22T18:34:42.036Z",
-    "total_skills": 5,
+    "generated_at": "2026-05-11T12:45:32.185Z",
+    "total_skills": 6,
     "by_domain": {
       "design": 1,
       "code": 1,
       "content": 1,
-      "data": 1,
+      "data": 2,
       "meta": 1
     },
-    "skills_with_evals": 5,
-    "skills_with_examples": 5,
+    "skills_with_evals": 6,
+    "skills_with_examples": 6,
     "stars": 0,
     "forks": 0,
     "open_issues": 0,
@@ -88,6 +88,33 @@
       "requires_tools": [],
       "license": "MIT",
       "path": "skills/data/data-analyst",
+      "has_examples": true,
+      "has_evals": true,
+      "last_commit": null
+    },
+    {
+      "name": "research-x-twitter",
+      "version": "1.0.0",
+      "description": "Researches X/Twitter posts and accounts with scoped API calls, summaries, and source links.",
+      "trigger": "Activate this skill when the user asks to research X/Twitter posts, accounts, followers, trends, or public conversation patterns using Xquik. Do not activate for generic social media advice, unsupported scraping, or direct write actions such as posting, liking, following, or sending DMs.",
+      "domain": "data",
+      "tags": [
+        "x-twitter",
+        "social-media",
+        "api",
+        "research",
+        "monitoring"
+      ],
+      "author": "kriptoburak",
+      "model_compatibility": [
+        "claude-sonnet-4-6",
+        "claude-opus-4-6"
+      ],
+      "requires_tools": [
+        "Bash"
+      ],
+      "license": "MIT",
+      "path": "skills/data/research-x-twitter",
       "has_examples": true,
       "has_evals": true,
       "last_commit": null

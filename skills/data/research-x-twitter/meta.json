@@ -1,0 +1,12 @@
+{
+  "name": "research-x-twitter",
+  "version": "1.0.0",
+  "description": "Researches X/Twitter posts and accounts with scoped API calls, summaries, and source links.",
+  "trigger": "Activate this skill when the user asks to research X/Twitter posts, accounts, followers, trends, or public conversation patterns using Xquik. Do not activate for generic social media advice, unsupported scraping, or direct write actions such as posting, liking, following, or sending DMs.",
+  "domain": "data",
+  "tags": ["x-twitter", "social-media", "api", "research", "monitoring"],
+  "author": "kriptoburak",
+  "model_compatibility": ["claude-sonnet-4-6", "claude-opus-4-6"],
+  "requires_tools": ["Bash"],
+  "license": "MIT"
+}
