@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-03-22T18:34:42.036Z",
-    "total_skills": 5,
+    "generated_at": "2026-07-06T18:09:52.843Z",
+    "total_skills": 6,
     "by_domain": {
       "design": 1,
-      "code": 1,
+      "code": 2,
       "content": 1,
       "data": 1,
       "meta": 1
     },
-    "skills_with_evals": 5,
-    "skills_with_examples": 5,
+    "skills_with_evals": 6,
+    "skills_with_examples": 6,
     "stars": 0,
     "forks": 0,
     "open_issues": 0,
@@ -40,6 +40,37 @@
       "path": "skills/code/code-reviewer",
       "has_examples": true,
       "has_evals": true,
+      "last_commit": {
+        "sha": "02370623a724900f1680baff4c6cdfed2d55fa89",
+        "date": "2026-03-22 22:10:43 +0100",
+        "message": "feat: add full project — skills registry, site, scripts, desktop app"
+      }
+    },
+    {
+      "name": "routerbase-gateway",
+      "version": "1.0.0",
+      "description": "Guides RouterBase API integration, model selection, and media generation through an OpenAI-compatible gateway.",
+      "trigger": "Activate this skill when the user asks to integrate RouterBase, migrate OpenAI-compatible SDK calls, choose RouterBase model IDs, or build media generation workflows through RouterBase. Do not activate for generic OpenAI SDK questions that do not involve RouterBase. If the user asks for live pricing or current model availability, verify against RouterBase before presenting final recommendations.",
+      "domain": "code",
+      "tags": [
+        "routerbase",
+        "openai-compatible",
+        "model-routing",
+        "api-integration",
+        "media-generation"
+      ],
+      "author": "zenlee123",
+      "model_compatibility": [
+        "claude-sonnet-4-6",
+        "claude-opus-4-6"
+      ],
+      "requires_tools": [
+        "WebFetch"
+      ],
+      "license": "MIT",
+      "path": "skills/code/routerbase-gateway",
+      "has_examples": true,
+      "has_evals": true,
       "last_commit": null
     },
     {
@@ -65,7 +96,11 @@
       "path": "skills/content/doc-writer",
       "has_examples": true,
       "has_evals": true,
-      "last_commit": null
+      "last_commit": {
+        "sha": "02370623a724900f1680baff4c6cdfed2d55fa89",
+        "date": "2026-03-22 22:10:43 +0100",
+        "message": "feat: add full project — skills registry, site, scripts, desktop app"
+      }
     },
     {
       "name": "data-analyst",
@@ -90,7 +125,11 @@
       "path": "skills/data/data-analyst",
       "has_examples": true,
       "has_evals": true,
-      "last_commit": null
+      "last_commit": {
+        "sha": "02370623a724900f1680baff4c6cdfed2d55fa89",
+        "date": "2026-03-22 22:10:43 +0100",
+        "message": "feat: add full project — skills registry, site, scripts, desktop app"
+      }
     },
     {
       "name": "frontend-design",
@@ -119,7 +158,11 @@
       "path": "skills/design/frontend-design",
       "has_examples": true,
       "has_evals": true,
-      "last_commit": null
+      "last_commit": {
+        "sha": "02370623a724900f1680baff4c6cdfed2d55fa89",
+        "date": "2026-03-22 22:10:43 +0100",
+        "message": "feat: add full project — skills registry, site, scripts, desktop app"
+      }
     },
     {
       "name": "skill-creator",
@@ -146,7 +189,11 @@
       "path": "skills/meta/skill-creator",
       "has_examples": true,
       "has_evals": true,
-      "last_commit": null
+      "last_commit": {
+        "sha": "02370623a724900f1680baff4c6cdfed2d55fa89",
+        "date": "2026-03-22 22:10:43 +0100",
+        "message": "feat: add full project — skills registry, site, scripts, desktop app"
+      }
     }
   ]
 }
