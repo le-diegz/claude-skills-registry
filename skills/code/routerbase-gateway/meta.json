@@ -1,0 +1,12 @@
+{
+  "name": "routerbase-gateway",
+  "version": "1.0.0",
+  "description": "Guides RouterBase API integration, model selection, and media generation through an OpenAI-compatible gateway.",
+  "trigger": "Activate this skill when the user asks to integrate RouterBase, migrate OpenAI-compatible SDK calls, choose RouterBase model IDs, or build media generation workflows through RouterBase. Do not activate for generic OpenAI SDK questions that do not involve RouterBase. If the user asks for live pricing or current model availability, verify against RouterBase before presenting final recommendations.",
+  "domain": "code",
+  "tags": ["routerbase", "openai-compatible", "model-routing", "api-integration", "media-generation"],
+  "author": "zenlee123",
+  "model_compatibility": ["claude-sonnet-4-6", "claude-opus-4-6"],
+  "requires_tools": ["WebFetch"],
+  "license": "MIT"
+}
