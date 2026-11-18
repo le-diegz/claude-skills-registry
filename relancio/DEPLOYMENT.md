@@ -20,7 +20,7 @@
 
 ## 3. Vercel
 
-1. Importer le dépôt, **Root Directory = `relancio`**, framework Next.js.
+1. Importer le dépôt (racine du projet), framework Next.js.
 2. Variables d'environnement (Production + Preview) : voir `.env.example`. `CRON_SECRET` = 32+ caractères aléatoires (`openssl rand -hex 32`).
 3. `vercel.json` déclare le cron `/api/cron/followups` toutes les heures (minute 5). Sur le plan Hobby, Vercel limite les crons à une exécution par jour : utiliser le plan Pro ou un planificateur externe (GitHub Actions, cron-job.org) qui appelle l'URL avec `Authorization: Bearer <CRON_SECRET>`.
 4. Domaine personnalisé + HTTPS.

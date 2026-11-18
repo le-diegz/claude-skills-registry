@@ -11,7 +11,7 @@ Relancio importe ou enregistre vos devis, calcule les relances à faire (jours o
 Prérequis : Node.js 22+, Docker (pour Supabase local).
 
 ```bash
-cd relancio
+git clone <url-du-depot> relancio && cd relancio
 npm install
 npx supabase start          # Postgres, Auth, Storage, Mailpit (emails locaux sur http://127.0.0.1:54324)
 npx supabase db reset       # applique les migrations de supabase/migrations
